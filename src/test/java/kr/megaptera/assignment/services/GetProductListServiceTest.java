@@ -1,9 +1,9 @@
 package kr.megaptera.assignment.services;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
-import java.util.List;
-import kr.megaptera.assignment.models.Product;
+import kr.megaptera.assignment.repositories.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,16 +11,19 @@ class GetProductListServiceTest {
 
   private GetProductListService getProductListService;
 
+  private ProductRepository productRepository;
+
   @BeforeEach
   void setUp() {
-    getProductListService = new GetProductListService();
+    productRepository = mock(ProductRepository.class);
+    getProductListService = new GetProductListService(productRepository);
   }
 
   @Test
   void getProductList() {
-    List<Product> productList = getProductListService.getProductList();
+    getProductListService.getProductList();
 
-    assertThat(productList).hasSize(1);
+    verify(productRepository).findAll();
   }
 
 }

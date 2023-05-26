@@ -29,4 +29,20 @@ public class Product extends BaseEntity {
     this.name = name;
     this.price = price;
   }
+
+  public static Product create(String name, Long price) {
+    return new Product(ProductId.generate(), name, new Money(price));
+  }
+
+  public ProductId id() {
+    return id;
+  }
+
+  public String name() {
+    return name;
+  }
+
+  public Money price() {
+    return price;
+  }
 }

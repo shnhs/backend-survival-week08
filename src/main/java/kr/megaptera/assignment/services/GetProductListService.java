@@ -1,18 +1,21 @@
 package kr.megaptera.assignment.services;
 
 import java.util.List;
-import kr.megaptera.assignment.models.Money;
 import kr.megaptera.assignment.models.Product;
-import kr.megaptera.assignment.models.ProductId;
+import kr.megaptera.assignment.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GetProductListService {
 
+  private final ProductRepository productRepository;
+
+  public GetProductListService(ProductRepository productRepository) {
+    this.productRepository = productRepository;
+  }
+
   public List<Product> getProductList() {
-    // TODO: 현재 작업중
-    new Product(new ProductId(), "멋진물건", new Money(100_000L));
-    return List.of();
+    return productRepository.findAll();
   }
 
 }

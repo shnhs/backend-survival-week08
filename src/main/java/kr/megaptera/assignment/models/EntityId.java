@@ -1,8 +1,13 @@
 package kr.megaptera.assignment.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 import java.util.Objects;
 
+@MappedSuperclass
 public abstract class EntityId {
+
+  @Column(name = "id")
   private String value;
 
   public EntityId() {

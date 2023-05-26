@@ -1,17 +1,20 @@
 package kr.megaptera.assignment.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
+import com.github.f4b6a3.tsid.TsidCreator;
 
-@MappedSuperclass
+
 public class ProductId extends EntityId {
-  @Column(name = "id")
-  private String value;
-
+  
   public ProductId() {
   }
 
   public ProductId(String value) {
     super(value);
   }
+
+  public static ProductId generate() {
+    return new ProductId(TsidCreator.getTsid()
+                                    .toString());
+  }
+
 }
