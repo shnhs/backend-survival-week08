@@ -2,6 +2,7 @@
 /build/
 /web/node_modules
 
+
 # Ignore Gradle GUI config
 gradle-app.setting
 
@@ -16,3 +17,7 @@ gradle-app.setting
 
 # IDEA
 .idea/
+# Parcel related files
+/web/.parcel-cache
+dist/
+.cache/
